@@ -1,0 +1,10 @@
+{
+  "name": "mixed",
+  "version": "0.0.1",
+  "repository": "git@github.com:trotux/mixed.git",
+  "author": "Anatoly Nikulin <trotux@gmail.com>",
+  "license": "MIT",
+  "vim": {
+    "opt": true
+  }
+}
