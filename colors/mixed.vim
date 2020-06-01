@@ -74,7 +74,6 @@ let s:invert_tabline = ''
 let s:italicize_comments = ''
 let s:invert_signs = s:inverse
 
-
 " }}}
 " Setup Colors: {{{
 
@@ -102,6 +101,7 @@ let s:gray_244          = ['#808080', 244 ]
 
 let s:special_bg1       = ['#5f5f87', 60  ]
 let s:special_bg2       = ['#875f87', 96  ]
+let s:special_red         = ['#800000', 1   ]
 
 " light colors
 let s:light_red         = ['#d78787', 174 ]
@@ -117,33 +117,20 @@ let s:light_purple      = ['#af5f87', 132 ]
 let s:normal_red        = ['#cc241d', 124 ]
 let s:normal_brown      = ['#c7915b', 173 ]
 let s:normal_green      = ['#5fd75f', 77  ]
-let s:normal_blue       = ['#0a9dff', 39  ]
-let s:normal_aqua       = ['#87ffaf', 121 ]
+let s:normal_blue       = ['#5f87df', 68  ]
+let s:normal_aqua       = ['#8ec07c', 108 ]
 let s:normal_orange     = ['#ff8700', 208 ]
-let s:normal_yellow     = ['#fade3e', 221 ]  " #ffff5f #ffff00
+let s:normal_yellow     = ['#ffff00', 221 ]  " #ffff5f #ffff00
 let s:normal_purple     = ['#b16286', 132 ]
 
+" Bright colors
 let s:bright_red        = ['#fb4934', 167 ]
 let s:bright_green      = ['#afff00', 154 ]
 let s:bright_blue       = ['#005fff', 27  ]
-let s:bright_aqua       = ['#8ec07c', 108 ]
+let s:bright_aqua       = ['#87ffaf', 121 ]
 let s:bright_orange     = ['#fe8019', 208 ]
 let s:bright_yellow     = ['#fabd2f', 214 ] 
 let s:bright_purple     = ['#d3869b', 175 ]
-
-"let s:gb.neutral_red    = ['#cc241d', 124]
-
-"let s:normal_red        = ['#ff2c4b', 196 ]
-"let s:faded_red         = ['#800000', 1   ]
-
-" Bright colors
-let s:red    = s:normal_red
-let s:green  = s:normal_green
-let s:yellow = s:normal_yellow
-let s:blue   = s:normal_blue
-let s:purple = s:normal_purple
-let s:aqua   = s:normal_aqua
-let s:orange = s:normal_orange
 
 " determine relative colors
 let s:gray = s:gray_245
@@ -152,16 +139,6 @@ let s:color_column      = s:bg1
 let s:color_line        = s:bg1
 let s:sign_column       = s:bg1
 let s:number_column     = s:none
-
-"let s:cursor            = ['#ffaf00', 214 ]
-let s:search            = ['#000000', 0   ]
-let s:search_bg         = ['#afdf5f', 149 ]
-let s:inc_search        = ['#000000', 0   ]
-let s:inc_search_bg     = ['#ffdfaf', 223 ]
-let s:nontext           = ['#9e9e9e', 247 ]
-let s:nontext_bg        = ['#121212', 233 ]
-let s:vert_split_fg     = ['#3a3a3a', 237 ]
-let s:vert_split_bg     = ['#3a3a3a', 237 ]
 
 " }}}
 " Setup Terminal Colors For Neovim: {{{
@@ -254,42 +231,40 @@ call s:HL('MixedGray', s:gray)
 
 call s:HL('MixedBg0', s:bg0)
 call s:HL('MixedBg1', s:bg1)
-"call s:HL('MixedBg2', s:bg2)
-"call s:HL('MixedBg3', s:bg3)
-"call s:HL('MixedBg4', s:bg4)
+call s:HL('MixedBg2', s:bg2)
+call s:HL('MixedBg3', s:bg3)
+call s:HL('MixedBg4', s:bg4)
 
-call s:HL('MixedRed', s:red)
-call s:HL('MixedRedBold', s:red, s:none, s:bold)
-call s:HL('MixedGreen', s:green)
-call s:HL('MixedGreenBold', s:green, s:none, s:bold)
-call s:HL('MixedYellow', s:yellow)
-call s:HL('MixedYellowBold', s:yellow, s:none, s:bold)
-call s:HL('MixedBlue', s:blue)
-call s:HL('MixedBlueBold', s:blue, s:none, s:bold)
-call s:HL('MixedPurple', s:purple)
-call s:HL('MixedPurpleBold', s:purple, s:none, s:bold)
-call s:HL('MixedAqua', s:aqua)
-call s:HL('MixedAquaBold', s:aqua, s:none, s:bold)
-call s:HL('MixedOrange', s:orange)
-call s:HL('MixedOrangeBold', s:orange, s:none, s:bold)
+call s:HL('MixedNormalRedSign', s:normal_red, s:sign_column, s:invert_signs)
+call s:HL('MixedNormalGreenSign', s:normal_green, s:sign_column, s:invert_signs)
+call s:HL('MixedNormalYellowSign', s:normal_yellow, s:sign_column, s:invert_signs)
+call s:HL('MixedNormalBlueSign', s:normal_blue, s:sign_column, s:invert_signs)
+call s:HL('MixedNormalPurpleSign', s:normal_purple, s:sign_column, s:invert_signs)
+call s:HL('MixedNormalAquaSign', s:normal_aqua, s:sign_column, s:invert_signs)
+call s:HL('MixedNormalOrangeSign', s:normal_orange, s:sign_column, s:invert_signs)
 
-"call s:HL('MixedRedSign', s:red, s:sign_column, s:invert_signs)
-"call s:HL('MixedGreenSign', s:green, s:sign_column, s:invert_signs)
-"call s:HL('MixedYellowSign', s:yellow, s:sign_column, s:invert_signs)
-"call s:HL('MixedBlueSign', s:blue, s:sign_column, s:invert_signs)
-"call s:HL('MixedPurpleSign', s:purple, s:sign_column, s:invert_signs)
-"call s:HL('MixedAquaSign', s:aqua, s:sign_column, s:invert_signs)
-"call s:HL('MixedOrangeSign', s:orange, s:sign_column, s:invert_signs)
+call s:HL('MixedLightRedSign', s:light_red, s:sign_column, s:invert_signs)
+call s:HL('MixedLightGreenSign', s:light_green, s:sign_column, s:invert_signs)
+call s:HL('MixedLightYellowSign', s:light_yellow, s:sign_column, s:invert_signs)
+call s:HL('MixedLightBlueSign', s:light_blue, s:sign_column, s:invert_signs)
+call s:HL('MixedLightPurpleSign', s:light_purple, s:sign_column, s:invert_signs)
+call s:HL('MixedLightAquaSign', s:light_aqua, s:sign_column, s:invert_signs)
+call s:HL('MixedLightOrangeSign', s:light_orange, s:sign_column, s:invert_signs)
 
 call s:HL('MixedNormalRed', s:normal_red)
+call s:HL('MixedNormalRedBold', s:normal_red, s:none, s:bold)
 call s:HL('MixedNormalPurple', s:normal_purple)
+call s:HL('MixedNormalPurpleBold', s:normal_purple, s:none, s:bold)
 call s:HL('MixedNormalGreen', s:normal_green)
-call s:HL('MixedNormalBlue', s:normal_blue)
-call s:HL('MixedNormalYellow', s:normal_yellow)
-call s:HL('MixedNormalAqua', s:normal_aqua)
-
 call s:HL('MixedNormalGreenBold', s:normal_green, s:none, s:bold)
+call s:HL('MixedNormalBlue', s:normal_blue)
 call s:HL('MixedNormalBlueBold', s:normal_blue, s:none, s:bold)
+call s:HL('MixedNormalYellow', s:normal_yellow)
+call s:HL('MixedNormalYellowBold', s:normal_yellow, s:none, s:bold)
+call s:HL('MixedNormalAqua', s:normal_aqua)
+call s:HL('MixedNormalAquaBold', s:normal_aqua, s:none, s:bold)
+call s:HL('MixedNormalOrange', s:normal_orange)
+call s:HL('MixedNormalOrangeBold', s:normal_orange, s:none, s:bold)
 
 call s:HL('MixedLightRed', s:light_red)
 call s:HL('MixedLightBrown', s:light_brown, s:none, s:bold)
@@ -300,11 +275,7 @@ call s:HL('MixedLightAqua', s:light_aqua)
 
 call s:HL('MixedLightBlueBold', s:light_blue, s:none, s:bold)
 
-
 call s:HL('MixedBrightGreen', s:bright_green)
-
-
-call s:HL('MixedGreenSign', s:green, s:sign_column, s:invert_signs)
 
 " }}}
 
@@ -330,7 +301,7 @@ if version >= 700
   " Tab pages line filler
   call s:HL('TabLineFill', s:bg4, s:bg1, s:invert_tabline)
   " Active tab page label
-  call s:HL('TabLineSel', s:green, s:bg1, s:invert_tabline)
+  call s:HL('TabLineSel', s:normal_green, s:bg1, s:invert_tabline)
   " Not active tab page label
   hi! link TabLine TabLineFill
 
@@ -343,7 +314,7 @@ if version >= 703
   call s:HL('ColorColumn', s:none, s:color_column)
 
   " Concealed element: \lambda → λ
-  call s:HL('Conceal', s:blue, s:none)
+  call s:HL('Conceal', s:normal_blue, s:none)
 
   " Line number of CursorLine
   call s:HL('CursorLineNr', s:bright_yellow, s:bg1)
@@ -357,38 +328,38 @@ call s:HL('SpecialKey', s:bg2)
 call s:HL('Visual', s:fg0,  s:special_bg1)
 call s:HL('VisualNOS', s:fg0,  s:special_bg2)
 
-call s:HL('Search',    s:search, s:search_bg, s:inverse)
-call s:HL('IncSearch', s:inc_search, s:inc_search_bg, s:inverse)
+call s:HL('Search',    s:bg0, s:light_green, s:inverse)
+call s:HL('IncSearch', s:bg0, s:light_purple, s:inverse)
 
-call s:HL('Underlined', s:blue, s:none, s:underline)
+call s:HL('Underlined', s:normal_blue, s:none, s:underline)
 
 call s:HL('StatusLine',   s:bg2, s:fg1, s:inverse)
 call s:HL('StatusLineNC', s:bg1, s:fg4, s:inverse)
 
 " The column separating vertically split windows
-call s:HL('VertSplit', s:vert_split_fg, s:vert_split_bg)
+call s:HL('VertSplit', s:fg0, s:fg0)
 
 " Current match in wildmenu completion
-call s:HL('WildMenu', s:blue, s:bg2, s:bold)
+call s:HL('WildMenu', s:normal_blue, s:bg2, s:bold)
 
 " Directory names, special names in listing
-hi! link Directory MixedGreenBold
+hi! link Directory MixedNormalGreenBold
 
 " Titles for output from :set all, :autocmd, etc.
-hi! link Title MixedGreenBold
+hi! link Title MixedNormalGreenBold
 
 " Error messages on the command line
-call s:HL('ErrorMsg',   s:bg0, s:red, s:bold)
+call s:HL('ErrorMsg',   s:light_yellow, s:normal_red)
 
 " More prompt: -- More --
-hi! link MoreMsg MixedYellowBold
+hi! link MoreMsg MixedNormalYellowBold
 " Current mode message: -- INSERT --
-hi! link ModeMsg MixedYellowBold
+hi! link ModeMsg MixedNormalYellowBold
 " 'Press enter' prompt and yes/no questions
-" hi! link Question MixedOrangeBold
+" hi! link Question MixedNormalOrangeBold
 hi! link Question MixedLightBrown
 " Warning messages
-hi! link WarningMsg MixedRedBold
+hi! link WarningMsg MixedNormalRedBold
 
 " }}}
 " Gutter: {{{
@@ -423,7 +394,7 @@ hi! link lCursor Cursor
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
 call s:HL('Todo', s:vim_fg, s:vim_bg, s:bold . s:italic)
-call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
+call s:HL('Error', s:normal_red, s:vim_bg, s:bold . s:inverse)
 
 " Generic statement
 hi! link Statement MixedLightRed
@@ -443,33 +414,33 @@ hi! link Keyword MixedLightRed
 " Variable name
 hi! link Identifier MixedlightBlue
 " Function name
-if g:mixed_function_bold == 1
-    hi! link Function MixedNormalGreenBold
-else
-    hi! link Function MixedNormalGreen
-endif
+"if g:mixed_function_bold == 1
+"    hi! link Function MixedNormalGreenBold
+"else
+    hi! link Function MixedLightGreen
+"endif
 
 " Generic preprocessor
-hi! link PreProc MixedLightGreen
+hi! link PreProc MixedNormalGreen
 " Preprocessor #include
-hi! link Include MixedLightGreen
+hi! link Include MixedNormalGreen
 " Preprocessor #define
-hi! link Define MixedLightGreen
+hi! link Define MixedNormalGreen
 " Same as Define
-hi! link Macro MixedLightGreen
+hi! link Macro MixedNormalGreen
 " Preprocessor #if, #else, #endif, etc.
-hi! link PreCondit MixedLightGreen
+hi! link PreCondit MixedNormalGreen
 
 " Generic constant
 hi! link Constant MixedNormalYellow
 " Character constant: 'c', '/n'
-hi! link Character MixedNormalYellow
+hi! link Character MixedNormalRed
 " String constant: "this is a string"
-hi! link String MixedNormalYellow
+hi! link String MixedLightYellow
 " Boolean constant: TRUE, false
 hi! link Boolean MixedNormalPurple
 " Number constant: 234, 0xff
-hi! link Number MixedNormalPurple
+hi! link Number MixedNormalRed
 " Floating point constant: 2.3e10
 hi! link Float MixedNormalBlue
 hi! link Special MixedNormalPurple
@@ -477,9 +448,9 @@ hi! link Special MixedNormalPurple
 " Generic type
 hi! link Type MixedLightBlue
 " static, register, volatile, etc
-hi! link StorageClass MixedLightBlue
+hi! link StorageClass MixedNormalBlue
 " struct, union, enum, etc.
-hi! link Structure MixedLightBlueBold
+hi! link Structure MixedNormalBlue
 " typedef
 hi! link Typedef MixedLightBlue
 
@@ -493,7 +464,7 @@ if version >= 700
   " Popup menu: normal item
   call s:HL('Pmenu', s:fg0, s:bg2)
   " Popup menu: selected item
-  call s:HL('PmenuSel', s:bg0, s:blue)
+  call s:HL('PmenuSel', s:bg0, s:normal_blue)
   " Popup menu: scrollbar
   call s:HL('PmenuSbar', s:none, s:bg2)
   " Popup menu: scrollbar thumb
@@ -503,27 +474,27 @@ endif
 " }}}
 " Diffs: {{{
 
-call s:HL('DiffDelete', s:red, s:bg0, s:inverse)
-call s:HL('DiffAdd',    s:green, s:bg0, s:inverse)
-"call s:HL('DiffChange', s:bg0, s:blue)
-"call s:HL('DiffText',   s:bg0, s:yellow)
+call s:HL('DiffDelete', s:normal_red, s:bg0, s:inverse)
+call s:HL('DiffAdd',    s:normal_green, s:bg0, s:inverse)
+call s:HL('DiffChange', s:bg0, s:normal_blue)
+call s:HL('DiffText',   s:bg0, s:normal_yellow)
 
 " Alternative setting
-call s:HL('DiffChange', s:aqua, s:bg0, s:inverse)
-call s:HL('DiffText',   s:yellow, s:bg0, s:inverse)
+call s:HL('DiffChange', s:normal_aqua, s:bg0, s:inverse)
+call s:HL('DiffText',   s:normal_yellow, s:bg0, s:inverse)
 
 " }}}
 " Spelling: {{{
 
 if has("spell")
   " Not capitalised word, or compile warnings
-    call s:HL('SpellCap',   s:none, s:none, s:undercurl, s:red)
+    call s:HL('SpellCap',   s:none, s:none, s:undercurl, s:normal_red)
   " Not recognized word
-  call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:blue)
+  call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:normal_blue)
   " Wrong spelling for selected region
-  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:aqua)
+  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:normal_aqua)
   " Rare word
-  call s:HL('SpellRare',  s:none, s:none, s:undercurl, s:purple)
+  call s:HL('SpellRare',  s:none, s:none, s:undercurl, s:normal_purple)
 endif
 
 " }}}
@@ -531,29 +502,29 @@ endif
 " Plugin specific -------------------------------------------------------------
 " GitGutter: {{{
 
-hi! link GitGutterAdd MixedGreenSign
-hi! link GitGutterChange MixedAquaSign
-hi! link GitGutterDelete MixedRedSign
-hi! link GitGutterChangeDelete MixedAquaSign
+hi! link GitGutterAdd MixedLightGreenSign
+hi! link GitGutterChange MixedLightBlueSign
+hi! link GitGutterDelete MixedLightRedSign
+hi! link GitGutterChangeDelete MixedNormalAquaSign
 
 " }}}
 " NERDTree: {{{
 
-hi! link NERDTreeDir MixedAqua
-hi! link NERDTreeDirSlash MixedAqua
+hi! link NERDTreeDir MixedNormalAqua
+hi! link NERDTreeDirSlash MixedNormalAqua
 
-hi! link NERDTreeOpenable MixedOrange
-hi! link NERDTreeClosable MixedOrange
+hi! link NERDTreeOpenable MixedNormalOrange
+hi! link NERDTreeClosable MixedNormalOrange
 
 hi! link NERDTreeFile MixedFg1
-hi! link NERDTreeExecFile MixedYellow
+hi! link NERDTreeExecFile MixedNormalYellow
 
 hi! link NERDTreeUp MixedGray
-hi! link NERDTreeCWD MixedGreen
+hi! link NERDTreeCWD MixedNormalGreen
 hi! link NERDTreeHelp MixedFg1
 
-hi! link NERDTreeToggleOn MixedGreen
-hi! link NERDTreeToggleOff MixedRed
+hi! link NERDTreeToggleOn MixedNormalGreen
+hi! link NERDTreeToggleOff MixedNormalRed
 
 " }}}
 " Vim Multiple Cursors: {{{
@@ -564,34 +535,35 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 " }}}
 " coc.nvim: {{{
 
-hi! link CocErrorSign MixedRedSign
-hi! link CocWarningSign MixedOrangeSign
-hi! link CocInfoSign MixedYellowSign
-hi! link CocHintSign MixedBlueSign
-hi! link CocErrorFloat MixedRed
-hi! link CocWarningFloat MixedOrange
-hi! link CocInfoFloat MixedYellow
-hi! link CocHintFloat MixedBlue
-hi! link CocDiagnosticsError MixedRed
-hi! link CocDiagnosticsWarning MixedOrange
-hi! link CocDiagnosticsInfo MixedYellow
-hi! link CocDiagnosticsHint MixedBlue
+hi! link CocErrorSign MixedNormalRedSign
+hi! link CocWarningSign MixedNormalOrangeSign
+hi! link CocInfoSign MixedNormalYellowSign
+hi! link CocHintSign MixedNormalBlueSign
+hi! link CocErrorFloat MixedNormalRed
+hi! link CocWarningFloat MixedNormalOrange
+hi! link CocInfoFloat MixedNormalYellow
+hi! link CocHintFloat MixedNormalBlue
+hi! link CocDiagnosticsError MixedNormalRed
+hi! link CocDiagnosticsWarning MixedNormalOrange
+hi! link CocDiagnosticsInfo MixedNormalYellow
+hi! link CocDiagnosticsHint MixedNormalBlue
 
-hi! link CocSelectedText MixedRed
+hi! link CocSelectedText MixedNormalRed
 hi! link CocCodeLens MixedGray
 
-call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:red)
-call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:orange)
-call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:yellow)
-call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:blue)
+call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:normal_red)
+call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:normal_orange)
+call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:normal_yellow)
+call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:normal_blue)
 
 " }}}
 " Filetype specific -----------------------------------------------------------
 " C: {{{
 
-hi! link cOperator  MixedPurple
-"hi! link cStructure MixedOrange
+hi! link cOperator  MixedNormalPurple
+"hi! link cStructure MixedNormalOrange
 hi! link cStatement MixedLightRed
+hi! link cConstant MixedNormalGreen
 
 " }}}
 " CPP: {{{
@@ -607,9 +579,9 @@ call s:HL('vimCommentTitle', s:normal_aqua, s:none, s:bold . s:italicize_comment
 
 hi! link vimVar MixedLightBlue
 hi! link vimOption MixedLightBlue
-hi! link vimNotation MixedOrange
-hi! link vimBracket MixedOrange
-hi! link vimMapModKey MixedOrange
+hi! link vimNotation MixedNormalOrange
+hi! link vimBracket MixedNormalOrange
+hi! link vimMapModKey MixedNormalOrange
 hi! link vimFuncSID MixedFg3
 hi! link vimSetSep MixedFg3
 hi! link vimSep MixedFg3
@@ -659,11 +631,6 @@ hi! link vimContinue MixedFg3
 "hi VisualNOS    ctermfg=255 guifg=#eeeeee ctermbg=60  guibg=#5f5f87
 " hi WildMenu     ctermfg=0   guifg=#000000 ctermbg=150 guibg=#afdf87 cterm=bold gui=bold
 " Special {{{
-
-"" C {{{2
-"hi cFunctionTag     ctermfg=228 guifg=#afdf87
-"hi cUserFunction    ctermfg=228 guifg=#afdf87
-"" }}}
 
 "" .diff {{{2
 ""hi diffAdded    ctermfg=150 guifg=#afdf87
