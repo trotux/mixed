@@ -246,7 +246,7 @@ endfunction
 
 " memoize common hi groups
 call s:HL('MixedFg0', s:fg0)
-call s:HL('MixedFg1', s:fg1
+call s:HL('MixedFg1', s:fg1)
 call s:HL('MixedFg2', s:fg2)
 call s:HL('MixedFg3', s:fg3)
 call s:HL('MixedFg4', s:fg4)
