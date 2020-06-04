@@ -306,7 +306,7 @@ if version >= 700
   hi! link TabLine TabLineFill
 
   " Match paired bracket under the cursor
-  call s:HL('MatchParen', s:bg0, s:bright_yellow, s:bold)
+  call s:HL('MatchParen', s:bg0, s:bright_blue, s:bold)
 endif
 
 if version >= 703
@@ -464,7 +464,7 @@ if version >= 700
   " Popup menu: normal item
   call s:HL('Pmenu', s:fg0, s:bg2)
   " Popup menu: selected item
-  call s:HL('PmenuSel', s:bg0, s:normal_blue)
+  call s:HL('PmenuSel', s:bg0, s:light_blue)
   " Popup menu: scrollbar
   call s:HL('PmenuSbar', s:none, s:bg2)
   " Popup menu: scrollbar thumb
